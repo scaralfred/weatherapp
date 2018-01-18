@@ -1,0 +1,8 @@
+.Main {
+    height: 65vh;
+    background: #145C9E;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

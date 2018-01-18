@@ -1,0 +1,11 @@
+.WeatherIcon {
+  display: inline-block;
+  width: 55%;
+  padding: 10px;
+  box-sizing: border-box;
+  float: left;
+}
+
+.WeatherIcon img {
+    width: 60%
+}
