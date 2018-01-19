@@ -16,7 +16,6 @@ axios.get(geocodeUrl).then((response) => {
     var weatherUrl = `https://api.darksky.net/forecast/a4bd1aaf575dc483dd6b1dce0be3c9ca/${lat},${lng}?units=si`;
     console.log(response.data.results[0].formatted_address);
     cityCorrectName = response.data.results[0].address_components[0].short_name
-    console.log(weatherUrl)
     return axios.get(weatherUrl);
 }).then((response) => {
     var temperature = response.data.currently.temperature;

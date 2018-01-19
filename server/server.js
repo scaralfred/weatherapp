@@ -5,6 +5,10 @@ const app = express();
 const axios = require('axios')
 const weather = require('./weather');
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+}
+
 app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
