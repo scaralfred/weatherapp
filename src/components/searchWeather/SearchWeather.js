@@ -23,7 +23,7 @@ class searchWeather extends Component {
             return null
         } else {
             this.setState({ loadingSpinner: true, showFetchedWeather: false })
-            axios.post('/weather', {city: cityName})
+            axios.post('https://weatherappit.herokuapp.com/weather', {city: cityName})
             .then(function (response) {
                 thisBridge.setState({ weather: response.data.temperature, cityNameDisplayed: response.data.city, weatherIcon: response.data.weatherIcon, showFetchedWeather: true, loadingSpinner: false})
                 console.log(thisBridge.state)
