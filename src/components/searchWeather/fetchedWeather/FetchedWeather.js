@@ -7,9 +7,9 @@ const fetchedWeather = (props) => {
         <div className="FetchedBlock">
             <h1>It's currently &nbsp;<strong>{props.temp.toFixed(0)}&#176;</strong> degrees in &nbsp;<strong>{props.city}</strong> .</h1>
             <div className="IconBlock">
-                  <WeatherIcon />
+                  <WeatherIcon weatherIcons={props.weatherCondition}/>
                   <div className="WeatherDescription">
-                        <p><strong>{props.weatherCondition}</strong></p>
+                        <p>{props.weatherCondition}</p>
                    </div>
             </div>
         </div>
