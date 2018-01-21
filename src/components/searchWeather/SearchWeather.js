@@ -12,7 +12,8 @@ class searchWeather extends Component {
         showFetchedWeather: false,
         loadingSpinner: false,
         cityNameDisplayed: null,
-        weatherIcon: null
+        weatherIcon: null,
+        receivedError: null
     }
 
     fetchWeather = () => {
@@ -22,14 +23,14 @@ class searchWeather extends Component {
         if (cityName === "") {
             return null
         } else {
-            this.setState({ loadingSpinner: true, showFetchedWeather: false })
+            this.setState({ loadingSpinner: true, showFetchedWeather: false, receivedError: null })
             axios.post('https://weatherappit.herokuapp.com/weather', {city: cityName})
             .then(function (response) {
                 thisBridge.setState({ weather: response.data.temperature, cityNameDisplayed: response.data.city, weatherIcon: response.data.weatherIcon, showFetchedWeather: true, loadingSpinner: false})
                 console.log(thisBridge.state)
             })
             .catch (function (error) {
-            console.log(error);
+                thisBridge.setState({ receivedError: error, loadingSpinner: false });
             });
         }
     }
@@ -42,7 +43,7 @@ class searchWeather extends Component {
 
     render() {
 
-        let fetchedWeather, spinner;
+        let fetchedWeather, spinner, errorBlock;
 
         if (this.state.showFetchedWeather) {
             fetchedWeather = <FetchedWeather temp={this.state.weather} weatherCondition={this.state.weatherIcon} city={this.state.cityNameDisplayed}/>
@@ -50,6 +51,10 @@ class searchWeather extends Component {
             
         if (this.state.loadingSpinner) {
              spinner = <Spinner />
+        }
+
+        if (this.state.receivedError  !== null) {
+            errorBlock = <div><h1>Network/Typo error.</h1></div>;
         }
 
         return (
@@ -60,6 +65,7 @@ class searchWeather extends Component {
                 <Button clicked={this.fetchWeather} />
                 {spinner}
                 {fetchedWeather}
+                {errorBlock}
              </div>   
         );
     }
