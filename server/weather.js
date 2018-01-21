@@ -2,7 +2,7 @@ const axios = require('axios');
 
 var fetchTheWeather = (city, callback) => {
 
-var geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}+IT&key=AIzaSyBvdx8ccZd8hTKp-69dFvvwRLiM4PojBUo`;
+var geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=AIzaSyBvdx8ccZd8hTKp-69dFvvwRLiM4PojBUo`;
 
     var cityCorrectName;
 
