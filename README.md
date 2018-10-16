@@ -1,3 +1,7 @@
+A simple app that fetches the weather through google API
+Website 
+https://weatherappit.herokuapp.com
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 NOT OPTIMZED FOR MOBILE DEVICES
